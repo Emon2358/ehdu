@@ -3,71 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>URL短縮ツール</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 50px;
-        }
-        input, button {
-            padding: 10px;
-            margin: 5px;
-            font-size: 16px;
-        }
-        .result {
-            margin-top: 20px;
-            font-size: 18px;
-            font-weight: bold;
-        }
-        .error {
-            color: red;
-        }
-    </style>
-</head>
-<body>
-    <h1>URL短縮ツール</h1>
-    <p>URLを入力してください。</p>
-
-    <input type="text" id="urlInput" placeholder="例: https://www.example.com/some/long/url?query=1" size="50">
-    <button onclick="shortenURL()">URLを短縮</button>
-
-    <div class="result" id="result"></div>
-    <div class="error" id="error"></div>
-
+    <title>URL短縮例</title>
     <script>
         function shortenURL() {
-            var url = document.getElementById("urlInput").value.trim();
-            document.getElementById("error").textContent = '';  // エラーメッセージをクリア
-            document.getElementById("result").textContent = ''; // 結果をクリア
-
-            if (!url) {
-                document.getElementById("error").textContent = "URLを入力してください。";
-                return;
-            }
-
-            try {
-                // 入力されたURLを解析
-                let parsedUrl = new URL(url);
-                
-                // パス（pathname）とクエリパラメータ（search）、ハッシュ（hash）を処理
-                let shortUrl = parsedUrl.origin + parsedUrl.pathname;
-                
-                // クエリやハッシュ部分を削除して、最短のURLを提供
-                if (parsedUrl.search) {
-                    shortUrl += parsedUrl.search; // クエリパラメータがあれば付け加え
-                }
-                
-                if (parsedUrl.hash) {
-                    shortUrl += parsedUrl.hash; // ハッシュ部分があれば付け加え
-                }
-
-                // 結果を表示
-                document.getElementById("result").textContent = "短縮URL: " + shortUrl;
-            } catch (e) {
-                document.getElementById("error").textContent = "無効なURLです。再度確認してください。";
-            }
+            // 短縮URLを利用
+            let longUrl = "https://discord.com"; // 例としてDiscordのURL
+            let shortenedUrl = "https://bit.ly/xyz123"; // 短縮URLを設定
+            window.location.href = shortenedUrl; // 短縮されたURLにリダイレクト
         }
     </script>
+</head>
+<body>
+    <h1>短縮URLリダイレクト</h1>
+    <button onclick="shortenURL()">短縮URLへ移動</button>
 </body>
 </html>
